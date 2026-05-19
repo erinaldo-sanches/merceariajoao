@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercearia do Erinaldo - Início</title>
+    <link rel="stylesheet" href="css/teste.css">
+</head>
+
+<body>
+
+    <header class="topo">
+        <div class="topo-logo">
+            🏪 <strong>Mercearia do Erinaldo</strong>
+        </div>
+        <nav class="navegacao">
+            <a href="index.html" class="nav-link ativo">
+                🏠 Início
+            </a>
+            <a href="telas/produtos.html" class="nav-link">
+                📦 Produtos
+            </a>
+            <a href="telas/clientes.html" class="nav-link">
+                👥 Clientes
+            </a>
+            <a href="telas/vendas.html" class="nav-link">
+                🛒 Vendas
+            </a>
+        </nav>
+    </header>
+
+    <main class="conteudo">
+        <div class="container">
+
+            <h1 class="titulo-pagina">
+                📊 Dashboard
+            </h1>
+
+            <div class="grid-resumo">
+
+                <div class="card-resumo card-laranja">
+                    <span class="card-icone">📦</span>
+                    <div class="card-info">
+                        <p class="card-numero" id="total-produtos">0</p>
+                        <span>Produtos cadastrados</span>
+                    </div>
+                    <a href="telas/produtos.html">Ver todos →</a>
+                </div>
+
+                <div class="card-resumo card-amarelo">
+                    <span class="card-icone">👥</span>
+                    <div class="card-info">
+                        <p class="card-numero" id="total-clientes">0</p>
+                        <span>Clientes cadastrados</span>
+                    </div>
+                    <a href="telas/clientes.html">Ver todos →</a>
+                </div>
+
+                <div class="card-resumo card-verde">
+                    <span class="card-icone">🛒</span>
+                    <div class="card-info">
+                        <p class="card-numero" id="vendas-hoje">0</p>
+                        <span>Vendas hoje</span>
+                    </div>
+                    <a href="telas/vendas.html">Nova venda →</a>
+                </div>
+
+                <div class="card-resumo card-vermelho">
+                    <span class="card-icone">⚠️</span>
+                    <div class="card-info">
+                        <p class="card-numero" id="estoque-baixo">0</p>
+                        <span>Estoque baixo</span>
+                    </div>
+                    <a href="telas/produtos.html">Verificar →</a>
+                </div>
+
+            </div>
+
+            <section>
+                <h2 class="titulo-secao">
+                    ⚡ Ações Rápidas
+                </h2>
+                <div class="grid-acoes">
+                    <a href="telas/produtos.html" class="botao-acao">
+                        <span>➕</span>
+                        <span>Novo Produto</span>
+                    </a>
+                    <a href="telas/vendas.html" class="botao-acao">
+                        <span>💰</span>
+                        <span>Nova Venda</span>
+                    </a>
+                    <a href="telas/produtos.html" class="botao-acao">
+                        <span>📦</span>
+                        <span>Ver Produtos</span>
+                    </a>
+                    <a href="telas/clientes.html?novo=1" class="botao-acao">
+                        <span>👤</span>
+                        <span>Novo Cliente</span>
+                    </a>
+                </div>
+            </section>
+
+            <section>
+                <div class="cabecalho-secao">
+                    <h2 class="titulo-secao">
+                        🕐 Produtos Recentes
+                    </h2>
+                    <a href="telas/produtos.html" class="link-ver-todos">Ver todos</a>
+                </div>
+                <div class="tabela-container">
+                    <table class="tabela" id="tabela-produtos-recentes">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Preço</th>
+                                <th>Estoque</th>
+                                <th>Data</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="loading-row">
+                                <td colspan="6" class="centralizado mensagem-tabela">
+                                    ⏳ Carregando...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="rodape">
+        <div class="container">
+            <p>Mercearia do Erinaldo &copy; 2024 — CeepTech Solutions</p>
+            <span id="api-status" class="status-offline">
+                ● API Offline
+            </span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/index.js"></script>
+
+</body>
+
+</html>

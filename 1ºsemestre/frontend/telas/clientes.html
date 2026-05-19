@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes - Mercearia do Erinaldo</title>
+    <link rel="stylesheet" href="../css/teste.css">
+</head>
+<body>
+
+    <header class="topo">
+        <div class="topo-logo">
+            🏪 <strong>Mercearia do Erinaldo</strong>
+        </div>
+        <nav class="navegacao">
+            <a href="../index.html" class="nav-link">🏠 Início</a>
+            <a href="produtos.html" class="nav-link">📦 Produtos</a>
+            <a href="clientes.html" class="nav-link ativo">👥 Clientes</a>
+            <a href="vendas.html" class="nav-link">🛒 Vendas</a>
+        </nav>
+    </header>
+
+    <main class="conteudo">
+        <div class="container">
+            <h1 class="titulo-pagina">👥 Clientes</h1>
+
+            <div class="grid-resumo">
+                <div class="card-resumo card-amarelo">
+                    <span class="card-icone">👥</span>
+                    <div class="card-info">
+                        <p class="card-numero" id="totalClientes">0</p>
+                        <span>Clientes cadastrados</span>
+                    </div>
+                </div>
+            </div>
+
+            <section>
+                <h2 class="titulo-secao">🔍 Buscar e cadastrar</h2>
+                <div class="painel barra-acoes">
+                    <div class="grupo-busca">
+                        <input type="text" id="inputBusca" placeholder="Buscar cliente por nome...">
+                        <button type="button" id="btnBuscar" class="btn btn-secundario">🔍 Buscar</button>
+                        <button type="button" id="btnLimparBusca" class="btn">✕ Limpar</button>
+                    </div>
+                    <button type="button" id="btnNovoCliente" class="btn btn-primario">+ Novo Cliente</button>
+                </div>
+            </section>
+
+            <section>
+                <div class="cabecalho-secao">
+                    <h2 class="titulo-secao">📋 Lista de Clientes</h2>
+                    <button type="button" id="btnRecarregar" class="btn btn-pequeno">↺ Recarregar</button>
+                </div>
+                <div class="tabela-container">
+                    <table class="tabela">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Telefone</th>
+                                <th>E-mail</th>
+                                <th>Cadastro</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelaClientes">
+                            <tr>
+                                <td colspan="6" class="centralizado mensagem-tabela">⏳ Carregando...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="modalCliente" class="modal">
+        <div class="modal-caixa">
+            <div class="modal-topo">
+                <h3 id="modalTitulo">👤 Novo Cliente</h3>
+                <button type="button" id="btnFecharModal" class="btn-fechar">&times;</button>
+            </div>
+            <form id="formCliente" class="modal-corpo">
+                <input type="hidden" id="clienteId">
+                <div class="campo">
+                    <label for="nome">Nome *</label>
+                    <input type="text" id="nome" required maxlength="100" placeholder="Nome completo">
+                </div>
+                <div class="campos-duplos">
+                    <div class="campo">
+                        <label for="telefone">Telefone</label>
+                        <input type="text" id="telefone" maxlength="20" placeholder="(44) 99999-9999">
+                    </div>
+                    <div class="campo">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" maxlength="100" placeholder="email@exemplo.com">
+                    </div>
+                </div>
+                <div class="campo">
+                    <label for="endereco">Endereço</label>
+                    <textarea id="endereco" rows="2" maxlength="200" placeholder="Rua, número, bairro..."></textarea>
+                </div>
+                <div class="modal-rodape">
+                    <button type="button" id="btnCancelar" class="btn">✕ Cancelar</button>
+                    <button type="submit" class="btn btn-primario">💾 Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="rodape">
+        <div class="container">
+            <p>Mercearia do Erinaldo &copy; 2024 — CeepTech Solutions</p>
+            <span id="api-status" class="status-offline">● API Offline</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/telas/clientes.js"></script>
+</body>
+</html>

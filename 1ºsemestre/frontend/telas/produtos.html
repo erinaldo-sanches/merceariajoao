@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Mercearia do Erinaldo</title>
+    <link rel="stylesheet" href="../css/teste.css">
+</head>
+<body>
+
+    <header class="topo">
+        <div class="topo-logo">
+            🏪 <strong>Mercearia do Erinaldo</strong>
+        </div>
+        <nav class="navegacao">
+            <a href="../index.html" class="nav-link">🏠 Início</a>
+            <a href="produtos.html" class="nav-link ativo">📦 Produtos</a>
+            <a href="clientes.html" class="nav-link">👥 Clientes</a>
+            <a href="vendas.html" class="nav-link">🛒 Vendas</a>
+        </nav>
+    </header>
+
+    <main class="conteudo">
+        <div class="container">
+            <h1 class="titulo-pagina">📦 Produtos</h1>
+
+            <div class="grid-resumo">
+                <div class="card-resumo card-laranja">
+                    <span class="card-icone">📦</span>
+                    <div class="card-info">
+                        <p class="card-numero" id="totalProdutos">0</p>
+                        <span>Total de produtos</span>
+                    </div>
+                </div>
+                <div class="card-resumo card-vermelho">
+                    <span class="card-icone">⚠️</span>
+                    <div class="card-info">
+                        <p class="card-numero" id="estoqueBaixo">0</p>
+                        <span>Estoque baixo</span>
+                    </div>
+                </div>
+                <div class="card-resumo card-verde">
+                    <span class="card-icone">💲</span>
+                    <div class="card-info">
+                        <p class="card-numero cor-verde" id="valorTotal">R$ 0,00</p>
+                        <span>Valor em estoque</span>
+                    </div>
+                </div>
+            </div>
+
+            <section>
+                <h2 class="titulo-secao">🔍 Buscar e cadastrar</h2>
+                <div class="painel barra-acoes">
+                    <div class="grupo-busca">
+                        <input type="text" id="inputBusca" placeholder="Buscar produto por nome...">
+                        <button type="button" id="btnBuscar" class="btn btn-secundario">🔍 Buscar</button>
+                        <button type="button" id="btnLimparBusca" class="btn">✕ Limpar</button>
+                    </div>
+                    <button type="button" id="btnNovoProduto" class="btn btn-primario">+ Novo Produto</button>
+                </div>
+            </section>
+
+            <section>
+                <div class="cabecalho-secao">
+                    <h2 class="titulo-secao">📋 Lista de Produtos</h2>
+                    <button type="button" id="btnRecarregar" class="btn btn-pequeno">↺ Recarregar</button>
+                </div>
+                <div class="tabela-container">
+                    <table class="tabela">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Produto</th>
+                                <th>Preço</th>
+                                <th>Estoque</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelaProdutos">
+                            <tr>
+                                <td colspan="6" class="centralizado mensagem-tabela">⏳ Carregando produtos...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="modalProduto" class="modal">
+        <div class="modal-caixa">
+            <div class="modal-topo">
+                <h3 id="modalTitulo">📦 Novo Produto</h3>
+                <button type="button" id="btnFecharModal" class="btn-fechar">&times;</button>
+            </div>
+            <form id="formProduto" class="modal-corpo">
+                <input type="hidden" id="produtoId">
+                <div class="campo">
+                    <label for="nome">Nome do Produto *</label>
+                    <input type="text" id="nome" required placeholder="Ex: Arroz Tipo 1 - 5kg" maxlength="100">
+                    <small>Obrigatório. Máximo 100 caracteres.</small>
+                </div>
+                <div class="campo">
+                    <label for="descricao">Descrição</label>
+                    <textarea id="descricao" rows="3" placeholder="Descrição detalhada do produto..." maxlength="255"></textarea>
+                    <small>Opcional. Máximo 255 caracteres.</small>
+                </div>
+                <div class="campos-duplos">
+                    <div class="campo">
+                        <label for="preco">Preço de Venda (R$) *</label>
+                        <input type="number" id="preco" step="0.01" min="0.01" required placeholder="0.00">
+                        <small>Obrigatório. Ex: 25.90</small>
+                    </div>
+                    <div class="campo">
+                        <label for="estoque">Quantidade em Estoque</label>
+                        <input type="number" id="estoque" min="0" value="0">
+                        <small>Quantidade inicial no estoque.</small>
+                    </div>
+                </div>
+                <div class="modal-rodape">
+                    <button type="button" id="btnCancelar" class="btn">✕ Cancelar</button>
+                    <button type="submit" class="btn btn-primario">💾 Salvar Produto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="rodape">
+        <div class="container">
+            <p>Mercearia do Erinaldo &copy; 2024 — CeepTech Solutions</p>
+            <span id="api-status" class="status-offline">● API Offline</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/telas/produtos.js"></script>
+</body>
+</html>
