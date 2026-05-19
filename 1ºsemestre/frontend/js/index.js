@@ -234,7 +234,7 @@ class Dashboard {
         }
         if (typeof mostrarAlerta === 'function') {
             mostrarAlerta(
-                `Não foi possível conectar em ${API_BASE_URL}. Verifique se o FastAPI está rodando.`,
+                `Não foi possível conectar em ${typeof urlApiExibicao === 'function' ? urlApiExibicao() : window.location.origin}. Verifique se o FastAPI está rodando em http://127.0.0.1:8000`,
                 'warning',
                 6000
             );

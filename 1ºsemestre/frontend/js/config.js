@@ -1,18 +1,26 @@
 /**
- * Configuração da URL da API.
- * Use ?api=http://127.0.0.1:8000 na URL ou localStorage 'mercearia_api_url' para alterar.
+ * URL base da API (mesma origem — sem CORS).
+ * Padrão: string vazia → requisições relativas (/health, /produtos, …).
+ * Para outro host: ?api=http://host:porta ou localStorage 'mercearia_api_base'.
  */
 (function () {
-    const PADRAO = 'http://127.0.0.1:8000';
+    const PADRAO = '';
+    const STORAGE_KEY = 'mercearia_api_base';
     const params = new URLSearchParams(window.location.search);
     const daUrl = params.get('api');
-    const salvo = localStorage.getItem('mercearia_api_url');
+    const salvo = localStorage.getItem(STORAGE_KEY);
 
-    const url = (daUrl || salvo || PADRAO).replace(/\/$/, '');
-    window.API_BASE_URL = url;
+    let url = PADRAO;
+    if (daUrl !== null) {
+        url = daUrl;
+    } else if (salvo !== null) {
+        url = salvo;
+    }
+
+    window.API_BASE_URL = String(url).replace(/\/$/, '');
 
     window.definirUrlApi = function (novaUrl) {
         window.API_BASE_URL = String(novaUrl).replace(/\/$/, '');
-        localStorage.setItem('mercearia_api_url', window.API_BASE_URL);
+        localStorage.setItem(STORAGE_KEY, window.API_BASE_URL);
     };
 })();

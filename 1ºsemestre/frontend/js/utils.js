@@ -77,7 +77,8 @@ async function verificarAPI() {
         if (typeof verificarApiOnline === 'function') {
             return verificarApiOnline();
         }
-        await axios.get(`${window.API_BASE_URL || 'http://127.0.0.1:8000'}/health`, {
+        const base = typeof window.API_BASE_URL === 'string' ? window.API_BASE_URL : '';
+        await axios.get(`${base}/health`, {
             timeout: 5000
         });
         return true;

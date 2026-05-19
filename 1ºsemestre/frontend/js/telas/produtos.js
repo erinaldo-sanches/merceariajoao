@@ -138,7 +138,7 @@ class GerenciadorProdutos {
         }
         if (!online) {
             mostrarAlerta(
-                `Backend não responde em ${API_BASE_URL}. Inicie: uvicorn main:app --reload --port 8000`,
+                `Backend não responde em ${typeof urlApiExibicao === 'function' ? urlApiExibicao() : window.location.origin}. Inicie: uvicorn main:app --reload --port 8000 e acesse http://127.0.0.1:8000`,
                 'warning',
                 8000
             );

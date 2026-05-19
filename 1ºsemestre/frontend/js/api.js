@@ -1,6 +1,10 @@
-// Configuração base da API (definida em config.js)
-const API_BASE_URL = window.API_BASE_URL || 'http://127.0.0.1:8000';
+// Configuração base da API (definida em config.js) — vazio = mesma origem, sem CORS
+const API_BASE_URL = typeof window.API_BASE_URL === 'string' ? window.API_BASE_URL : '';
 const API_TIMEOUT = 10000;
+
+function urlApiExibicao() {
+    return API_BASE_URL || window.location.origin || 'servidor';
+}
 
 let apiOnlineCache = null;
 let apiVerificacaoEmAndamento = null;
@@ -18,7 +22,7 @@ function isErroRede(erro) {
 
 function logErroApi(contexto, erro) {
     if (isErroRede(erro)) {
-        console.warn(`[API] ${contexto}: servidor indisponível em ${API_BASE_URL}`);
+        console.warn(`[API] ${contexto}: servidor indisponível em ${urlApiExibicao()}`);
         return;
     }
     console.error(`[API] ${contexto}:`, erro);
@@ -557,6 +561,7 @@ window.mostrarAlerta = mostrarAlerta;
 window.formatarData = formatarData;
 window.validarProduto = validarProduto;
 window.API_BASE_URL = API_BASE_URL;
+window.urlApiExibicao = urlApiExibicao;
 window.verificarApiOnline = verificarApiOnline;
 window.isErroRede = isErroRede;
 window.transformarProdutoParaBackend = transformarProdutoParaBackend;
@@ -616,11 +621,10 @@ window.ClienteAPI = ClienteAPI;
 window.VendaAPI = VendaAPI;
 
 console.log('✅ API.JS carregado');
-console.log(`🔗 API: ${API_BASE_URL}`);
+console.log(`🔗 API: ${API_BASE_URL || '(mesma origem)'}`);
 
 if (window.location.protocol === 'file:') {
     console.warn(
-        '⚠️ Abra o frontend com um servidor HTTP (ex.: python -m http.server 5500 na pasta frontend). ' +
-        'Arquivo file:// pode bloquear requisições à API.'
+        '⚠️ Não abra o HTML como file://. Inicie o FastAPI e acesse http://127.0.0.1:8000 (frontend servido pela API).'
     );
 }
